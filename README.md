@@ -23,5 +23,10 @@ funct greet(name) {
 }
 greet("Bob")
 ```
+Usage (python3 as example):
+```
+python3 main.py test.randg
+```
+
 ## License
 RANDG is licensed under the MIT License.
