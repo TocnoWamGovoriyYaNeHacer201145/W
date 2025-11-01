@@ -295,5 +295,8 @@ class RANDGInterpreter:
 
 # Usage
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        sys.exit(1)
+    filename = sys.argv[1]
     interpreter = RANDGInterpreter()
-    interpreter.EXEC_RANDG("test.randg") # Replace test.randg with your file path
+    interpreter.EXEC_RANDG(filename) # Or replace filename with you file path
