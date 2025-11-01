@@ -76,4 +76,4 @@ def RANDG(code_lines):
             RANDG_1(current_command)
     except:
         print("Error creating loop.")
-EXEC_RANDG("test.w") # Replace test.w with your file path
+EXEC_RANDG("test.randg") # Replace test.randg with your file path
