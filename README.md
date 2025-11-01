@@ -3,7 +3,7 @@
 Usage:
 
 ```randg
-W(n) # Where n is the number of lines, just don't use notes in W itself, it will break (but we'll fix that soon).
+RANDG(n) # Where n is the number of lines, just don't use notes in W itself, it will break (but we'll fix that soon).
 ```
 
 But if you want to write a little code yourself, then (but this is also random):
