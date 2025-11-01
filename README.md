@@ -9,7 +9,7 @@ RANDG(n) # Where n is the number of lines, just don't use notes in W itself, it 
 But if you want to write a little code yourself, then (but this is also random):
 
 ```randg
-print
+print "Hello, world!"
 math
 list
 random_number
