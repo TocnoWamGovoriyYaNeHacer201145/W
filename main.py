@@ -3,7 +3,7 @@ content=list()
 list_of_commands = ['print', 'math', 'list', 'random_number', 'append_in_list']
 math_list = ['+',"-","*","/"]
 letters = ['A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z']
-list1, list2, list3= list(), list(), list()
+list1, list2, list3 = list(), list(), list()
 def RANDG_1(command):
     if command.startswith('print'):
         if command.startswith('print "') and command.endswith('"'):
