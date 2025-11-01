@@ -31,7 +31,7 @@ python3 main.py <your .randg file>
 ## License
 RANDG is licensed under the MIT License.
 
-#P.S.
+# P.S.
 I have many plans to RANDG, but I won't implement all of them, or project will turn into Trash Bin. BUT, I'll try to release:
 - Package system
 - Classes
