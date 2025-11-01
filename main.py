@@ -61,7 +61,7 @@ def EXEC_RANDG(filename):
                 RANDG_1(command)
             elif command.startswith('RANDG(') and command.endswith(')'):
                 try:
-                    num_commands = int(command[2:-1])
+                    num_commands = int(command[6:-1])
                     RANDG(num_commands)
                 except ValueError:
                     print(f"ValueError: {command}")
