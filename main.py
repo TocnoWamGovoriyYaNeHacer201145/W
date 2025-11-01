@@ -291,7 +291,7 @@ class RANDGInterpreter:
                 self.content.append(current_command)
                 self.RANDG_1(current_command)
         except Exception as e:
-            print(f"Error creating loop for: {code_lines}, error: {e}")
+            print(f"Error creating loop for line: {code_lines}, error: {e}")
 
 # Usage
 if __name__ == "__main__":
