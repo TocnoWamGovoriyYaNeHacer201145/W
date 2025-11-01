@@ -265,19 +265,23 @@ class RANDGInterpreter:
                         block_commands.append(line)
                     if self.EVAL_CONDITION(condition):
                         self.EXEC_BLOCK(block_commands)
-            elif command.startswith('func '):
-                self.RANDG_1(command)  # Function creation
-            elif command in self.list_of_commands or command.startswith('print') or command.startswith('math') or command.startswith('var') or command.startswith('return') or '(' in command:
-                self.RANDG_1(command)
+        
             elif command.startswith('RANDG(') and command.endswith(')'):
                 try:
                     num_commands = int(command[6:-1])
                     self.RANDG(num_commands)
                 except ValueError:
                     print(f"ValueError: {command}")
+        
+            elif command.startswith('func '):
+                self.RANDG_1(command)  # Function creation
+        
+            elif command in self.list_of_commands or command.startswith('print') or command.startswith('math') or command.startswith('var') or command.startswith('return') or '(' in command:
+                self.RANDG_1(command)
+        
             else:
                 print(f'Unknown command: {command}')
-            
+        
             i += 1
     
     def RANDG(self, code_lines):
