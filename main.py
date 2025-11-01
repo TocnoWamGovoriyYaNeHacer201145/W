@@ -5,8 +5,14 @@ math_list = ['+',"-","*","/"]
 letters = ['A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z']
 list1, list2, list3= list(), list(), list()
 def RANDG_1(command):
-    if command == 'print':
-        print(''.join(random.choices(letters, k=random.randint(3, 8))))
+    if command.startswith('print'):
+        if command.startswith('print "') and command.endswith('"'):
+            try:
+                print(command[7:-1])
+            except:
+                print(''.join(random.choices(letters, k=random.randint(3, 16))))
+        else:
+            print(''.join(random.choices(letters, k=random.randint(3, 16))))
     elif command == 'math':
         randg_num1=random.randint(-999, 999)
         randg_num2=random.randint(-999, 999)
@@ -43,11 +49,11 @@ def RANDG_1(command):
                 list3.append(random.randint(-999, 999))
         elif random.randint(1, 2) == 2:
             if random.randint(1, 3) == 1:
-                list1.append(''.join(random.choices(letters, k=random.randint(3, 8))))
+                list1.append(''.join(random.choices(letters, k=random.randint(3, 16))))
             elif random.randint(1, 3) == 2:
-                list2.append(''.join(random.choices(letters, k=random.randint(3, 8))))
+                list2.append(''.join(random.choices(letters, k=random.randint(3, 16))))
             elif random.randint(1, 3) == 3:
-                list3.append(''.join(random.choices(letters, k=random.randint(3, 8))))
+                list3.append(''.join(random.choices(letters, k=random.randint(3, 16))))
 
 def READ_RANDG(filename):
     with open(filename, 'r') as file:
@@ -57,7 +63,7 @@ def READ_RANDG(filename):
 def EXEC_RANDG(filename):
     commands = READ_RANDG(filename)
     for command in commands:
-            if command in list_of_commands:
+            if command in list_of_commands or command.startswith('print'):
                 RANDG_1(command)
             elif command.startswith('RANDG(') and command.endswith(')'):
                 try:
@@ -75,5 +81,6 @@ def RANDG(code_lines):
             content.append(current_command)
             RANDG_1(current_command)
     except:
-        print("Error creating loop.")
+        print(f"Error creating loop for: {code_lines}")
+
 EXEC_RANDG("test.randg") # Replace test.randg with your file path
