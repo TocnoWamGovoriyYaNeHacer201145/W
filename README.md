@@ -1,4 +1,4 @@
-# Why I need RANDG?
+# Why YOU need RANDG?
 Let's imagine you're a vibe coder and can't write code yourself (or only a very small part of it), you blame yourself for it but can't stop, and so it goes on and on... then a programming language (I'm not 100% sure) called RANDG comes to the rescue. Its basic syntax consists of just RANDG and one parameter (there will be more in the future).
 Usage:
 
