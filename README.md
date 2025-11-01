@@ -18,6 +18,10 @@ if (2 > 1) {
   print "2 > 1"
 }
 var helloworld = "Hello, world!"
+funct greet(name) {
+  print "Hello, name!"
+}
+greet("Bob")
 ```
 ## License
 RANDG is licensed under the MIT License.
