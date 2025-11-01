@@ -14,6 +14,10 @@ math (2+2+2)
 list
 random_number
 append_in_list
+if (2>1) {
+  print "2 > 1"
+}
+var helloworld = "Hello, world!"
 ```
 ## License
 RANDG is licensed under the MIT License.
