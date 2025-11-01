@@ -10,7 +10,7 @@ But if you want to write a little code yourself, then (but this is also random):
 
 ```randg
 print "Hello, world!"
-math
+math (2+2+2)
 list
 random_number
 append_in_list
