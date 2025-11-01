@@ -4,7 +4,7 @@ import re
 class RANDGInterpreter:
     def __init__(self):
         self.content = []
-        self.list_of_commands = ['print', 'math', 'list', 'random_number', 'append_in_list', 'if', 'var', 'func', 'return']
+        self.list_of_commands = ['print', 'math', 'list', 'random_number', 'append_in_list', 'if', 'var', 'funct', 'return']
         self.math_list = ['+', "-", "*", "/"]
         self.letters = ['A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z']
         self.list1, self.list2, self.list3 = [], [], []
@@ -60,14 +60,14 @@ class RANDGInterpreter:
         return False
     
     def PROCESS_FUNCTION_DEF(self, command):
-        if command.startswith('func '):
+        if command.startswith('funct '):
             if ')' in command and '{' in command:
-                func_start = 5
+                funct_start = 5
                 param_start, param_end = command.find('('), command.find(')')
-                func_name = command[func_start:param_start].strip()
+                funct_name = command[funct_start:param_start].strip()
                 params_str = command[param_start+1:param_end].strip()
                 params = [p.strip() for p in params_str.split(',')] if params_str else []
-                self.functions[func_name] = {
+                self.functions[funct_name] = {
                     'params': params,
                     'body': command
                 }
@@ -76,8 +76,8 @@ class RANDGInterpreter:
     
     def CALL_FUNCTION(self, command):
         if '(' in command and command.endswith(')'):
-            func_name = command.split('(')[0].strip()
-            if func_name in self.functions:
+            funct_name = command.split('(')[0].strip()
+            if funct_name in self.functions:
                 args_str = command[command.find('(')+1:-1].strip()
                 args = [arg.strip() for arg in args_str.split(',')] if args_str else []
                 old_variables = self.variables.copy()
@@ -85,8 +85,8 @@ class RANDGInterpreter:
                     'variables': old_variables,
                     'return_value': self.return_value
                 })
-                func_data = self.functions[func_name]
-                for i, param in enumerate(func_data['params']):
+                funct_data = self.functions[funct_name]
+                for i, param in enumerate(funct_data['params']):
                     if i < len(args):
                         arg_value = args[i]
                         if arg_value.startswith('"') and arg_value.endswith('"'):
@@ -97,10 +97,10 @@ class RANDGInterpreter:
                             except:
                                 self.variables[param] = arg_value
                 self.return_value = None
-                func_body = func_data['body']
-                body_start = func_body.find('{') + 1
-                body_end = func_body.rfind('}')
-                body_commands = [cmd.strip() for cmd in func_body[body_start:body_end].split('\n') if cmd.strip() and cmd.strip() != '}']
+                funct_body = funct_data['body']
+                body_start = funct_body.find('{') + 1
+                body_end = funct_body.rfind('}')
+                body_commands = [cmd.strip() for cmd in funct_body[body_start:body_end].split('\n') if cmd.strip() and cmd.strip() != '}']
                 for cmd in body_commands:
                     if self.return_value is not None:
                         break
@@ -113,7 +113,7 @@ class RANDGInterpreter:
                 return result
             
             else:
-                print(f"Unknown function: {func_name}")
+                print(f"Unknown function: {funct_name}")
         
         return None
     
@@ -179,7 +179,7 @@ class RANDGInterpreter:
         elif command.startswith('var '):
             self.PROCESS_VARIABLE(command)
         
-        elif command.startswith('func '):
+        elif command.startswith('funct '):
             self.PROCESS_FUNCTION_DEF(command)
         
         elif command.startswith('return'):
@@ -228,7 +228,7 @@ class RANDGInterpreter:
             if not line:
                 i += 1
                 continue
-            if (line.startswith('if (') or line.startswith('func ')) and '{' in line:
+            if (line.startswith('if (') or line.startswith('funct ')) and '{' in line:
                 block = [line]
                 if '}' not in line:
                     i += 1
@@ -273,7 +273,7 @@ class RANDGInterpreter:
                 except ValueError:
                     print(f"ValueError: {command}")
         
-            elif command.startswith('func '):
+            elif command.startswith('funct '):
                 self.RANDG_1(command)  # Function creation
         
             elif command in self.list_of_commands or command.startswith('print') or command.startswith('math') or command.startswith('var') or command.startswith('return') or '(' in command:
