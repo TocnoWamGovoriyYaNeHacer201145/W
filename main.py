@@ -13,20 +13,27 @@ def RANDG_1(command):
                 print(''.join(random.choices(letters, k=random.randint(3, 16))))
         else:
             print(''.join(random.choices(letters, k=random.randint(3, 16))))
-    elif command == 'math':
-        randg_num1=random.randint(-999, 999)
-        randg_num2=random.randint(-999, 999)
-        if random.choice(math_list) == '+':
-            print(f'{randg_num1} + {randg_num2} = {randg_num1+randg_num2}')
-        elif random.choice(math_list) == '-':
-            print(f'{randg_num1} - {randg_num2} = {randg_num1-randg_num2}')
-        elif random.choice(math_list) == '*':
-            print(f'{randg_num1} * {randg_num2} = {randg_num1*randg_num2}')
-        elif random.choice(math_list):
+    elif command.startswith('math'):
+        if command.startswith('math (') and command.endswith(')'):
             try:
-                print(f'{randg_num1} / {randg_num2} = {randg_num1/randg_num2}')
-            except ZeroDivisionError:
-                print('ZeroDivisionError')
+                result = eval(command[6:-1])
+                print(f'{command[6:-1]} = {result}')
+            except Exception:
+                print(f'Error calculating: {Exception}')
+        else:
+            randg_num1=random.randint(-999, 999)
+            randg_num2=random.randint(-999, 999)
+            if random.choice(math_list) == '+':
+                print(f'{randg_num1} + {randg_num2} = {randg_num1+randg_num2}')
+            elif random.choice(math_list) == '-':
+                print(f'{randg_num1} - {randg_num2} = {randg_num1-randg_num2}')
+            elif random.choice(math_list) == '*':
+                print(f'{randg_num1} * {randg_num2} = {randg_num1*randg_num2}')
+            elif random.choice(math_list):
+                try:
+                    print(f'{randg_num1} / {randg_num2} = {randg_num1/randg_num2}')
+                except ZeroDivisionError:
+                    print('ZeroDivisionError')
     elif command == 'list':
         if random.randint(1, 3) == 1:
             print(f'List1: {list1}')
@@ -63,7 +70,7 @@ def READ_RANDG(filename):
 def EXEC_RANDG(filename):
     commands = READ_RANDG(filename)
     for command in commands:
-            if command in list_of_commands or command.startswith('print'):
+            if command in list_of_commands or command.startswith('print') or command.startswith('math'):
                 RANDG_1(command)
             elif command.startswith('RANDG(') and command.endswith(')'):
                 try:
