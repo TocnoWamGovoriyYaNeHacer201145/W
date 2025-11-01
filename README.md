@@ -25,7 +25,7 @@ greet("Bob")
 ```
 Usage (change python3 to your python version):
 ```
-python3 main.py test.randg
+python3 main.py <your .randg file>
 ```
 
 ## License
