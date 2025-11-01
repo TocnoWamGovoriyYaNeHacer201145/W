@@ -5,3 +5,7 @@ if (2 == 2) {
   print "2 = 2"
 }
 var testing = "Test1"
+funct calc(number1, number2) {
+  math (number1 + number2)
+}
+calc(16, 16)
