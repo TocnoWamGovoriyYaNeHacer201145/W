@@ -296,7 +296,7 @@ class RANDGInterpreter:
 # Usage
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: <your python version, python3 as exmaple> main.py <your .randg version>
+        print("Usage: <your python version, python3 as exmaple> main.py <your .randg version>")
         sys.exit(1)
     filename = sys.argv[1]
     interpreter = RANDGInterpreter()
